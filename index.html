@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Document</title>
 </head>
 <body>
@@ -13,13 +14,13 @@
       letter-spacing: 1px;
     }
     h4{
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       text-align: center;
       color: #ff7722;
 
     }
   
-.input{
+.input, input{
   padding: 5px;
   border: none;
   border-bottom: 1px solid black;
@@ -74,6 +75,14 @@ background-color: #ff7722;
 padding: 5px;
 border-radius: 10px;
 }
+#math{
+  background: wheat;
+  padding: 5px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+list-style-type: square;
+list-style: blue;
+}
   </style>
   <div id="container" >
     <h4>Calculate your Energy Bill</h4>
@@ -118,9 +127,27 @@ border-radius: 10px;
         Total Amount:  <span id="rs"> ₹</span> <span class="res" id="totalAmount">0.00</span></p>
       </div>
       </div><br> 
-      <button onclick="window.print()">Print</button> <hr>
-      Developer:  <br>
-      Rajnish Kumar <a href="mailto:rockstarrajnish4658@gmail.com" style="color: blue;float: right;font-size:19px;">Contact Me</a>
+
+         <div id="math">
+          <h4>Overview About Calculations of Energy Bill</h4>
+         <li> 1000 Watt = 1Kw </li>
+         <li> Formula of Unit: Watt/1000*Time(hours) </li>
+        <li> Formula of Unit of a day: watt/1000*time(hours)*days </li>
+        <li> In other words you say that: Kilowatt*time*day </li>
+        <li>  Cost of Electricity: Unit*Rate/unit </li>
+         </div>
+<div id="meterread">
+<p id="meterhead">Check Monthly Bill</p>
+<p>Tell Me Unit (See meter Reading)</p>
+<input type="Number" id="meterunit" value="00" onchange="meterRead()" >
+
+<p>Rate of Per Unit (In your State or City)</p>
+<input type="Number" id="meterrate" value="00" max="10" onchange="meterRead()" >
+
+<p id="MeterResult">0.00 ₹</p>
+</div>
+     <p> Developer:
+      Rajnish Kumar </p><a href="mailto:rockstarrajnish4658@gmail.com" style="color: blue;font-size:19px;font-weight:500;">Contact Me</a>
       <script>
         function clickMe(){
         const watt=parseInt(document.getElementById('powerConsume').value);
@@ -142,7 +169,18 @@ border-radius: 10px;
         document.getElementById('Kilowatt').innerHTML=kwh.toFixed(2)  ;
         document.getElementById('watt').innerHTML=watt.toFixed(2) ;
         }
+
+
+        function meterRead(){
+          a=parseFloat(document.querySelector('#meterunit').value);
+          b=parseFloat(document.querySelector('#meterrate').value);
+          c=a*b;
+          document.querySelector('#MeterResult').innerHTML=c.toFixed(2) + " " + "₹";
+          document.querySelector('#MeterResult').style.color="#ff7722"
+          document.querySelector('#MeterResult').style.fontWeight="900"
+        }
       </script>
+
 </body>
 </html>
 
