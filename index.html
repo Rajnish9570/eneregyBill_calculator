@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 1px;
+    }
+    h4{
+      font-size: 1.7rem;
+      text-align: center;
+      color: #ff7722;
+
+    }
+  
+.input{
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+font-size: 1.4rem;
+outline: none;
+font-weight: bold;
+width: 75px;
+background-color: #ff7722;
+
+}
+.sym{
+  font-weight: bold;
+  opacity: 0.5;
+  color: white;
+}
+.res{
+  float: right;
+font-weight: 900;
+color: #ff7722;
+}
+#rs{
+  opacity: 0.5;
+  float: right;
+  font-weight: 900;
+ 
+}
+a {
+  text-decoration: none;
+  font-size: 29px;
+  color:white;
+  font-weight: 900;
+}
+button{
+ background:#ff7722;
+ outline: none;
+ border: none;
+ color: white;
+}
+#calculator{
+  background-color: #ff7722;
+  padding: 5px;
+  color: white;
+  border-radius:8px;
+}
+#status{
+padding: 5px;
+border: 2px solid red;
+border-radius: 10px;
+}
+strong{
+background-color: #ff7722;
+padding: 5px;
+border-radius: 10px;
+}
+  </style>
+  <div id="container" >
+    <h4>Calculate your Energy Bill</h4>
+  <div id="calculator">
+  <p>
+    Power consumption in a day: <br>
+    <input type="number" class="input" id="powerConsume" value="00" class="inputBox" > <span class="sym">watt</span>
+
+    <p>
+   Hours of use in a day: <br>
+      <input type="number" value="00" class="input" id="powerDuration"> <span class="sym">hour</span>
+    </p>
+
+    <p>
+        Days of bill to Check: <br>
+         <input type="number" value="00" class="input" id="powerDays" > <span class="sym">day</span>
+       </p>
+
+       <p>
+       Charge of per unit: <br> 
+          <input type="number" value="00" class="input" id="unitCharge"> <span class="sym">₹</span>
+        </p>
+      </div>
+    <p>Note: All value are should you entered may be in Approximetly.</p>
+      <button class="btn" onclick="clickMe()"><a href="#swipe">Check Your Bill</a></button>
+  <br> <br>
+      <div id="status" style="font-weight: 900;" >
+       
+        <h4 id="swipe">Energy Bill</h4>
+    
+  <p> <strong>Value</strong> 
+    <hr>
+        Value in watt (W) <span id="rs"> W</span> <span class="res" id="watt">0.00 </span><br>
+        Value in Kilo-watt (Kw)  <span id="rs"> Kw</span> <span class="res" id="Kilowatt">0.00</span></p>
+   <p> <strong>Unit</strong> 
+    <hr>
+        Unit in one day: <span id="rs"> KwH</span> <span class="res" id="unitPerDay">0.00 </span><br>
+        Total Unit: <span id="rs"> KwH</span> <span class="res" id="totalUnit">0.00 </span> </p>
+  <p> <strong>Bill Amount</strong>
+    <hr>
+        Amount in one day: <span id="rs"> ₹</span> <span class="res" id="amountPerDay">0.00 </span><br>
+        Total Amount:  <span id="rs"> ₹</span> <span class="res" id="totalAmount">0.00</span></p>
+      </div>
+      </div><br> 
+      <button onclick="window.print()">Print</button> <hr>
+      Developer:  <br>
+      Rajnish Kumar <a href="mailto:rockstarrajnish4658@gmail.com" style="color: blue;float: right;font-size:19px;">Contact Me</a>
+      <script>
+        function clickMe(){
+        const watt=parseInt(document.getElementById('powerConsume').value);
+        const hours=parseInt(document.getElementById('powerDuration').value);
+        const days=parseInt(document.getElementById('powerDays').value);
+        const rs=parseInt(document.getElementById('unitCharge').value);
+      
+
+        const kwh=watt/1000
+        const UNITPERDAY= (watt/1000)*hours
+        const TOTALUNIT=UNITPERDAY*days
+        const AMOUNTPERDAY=UNITPERDAY*rs
+        const TOTALAMOUNT= TOTALUNIT*rs
+
+        document.getElementById('unitPerDay').innerHTML=UNITPERDAY.toFixed(2)  ;
+        document.getElementById('totalUnit').innerHTML=TOTALUNIT.toFixed(2)  ;
+        document.getElementById('amountPerDay').innerHTML=AMOUNTPERDAY.toFixed(2)  ;
+        document.getElementById('totalAmount').innerHTML=TOTALAMOUNT.toFixed(2)  ;
+        document.getElementById('Kilowatt').innerHTML=kwh.toFixed(2)  ;
+        document.getElementById('watt').innerHTML=watt.toFixed(2) ;
+        }
+      </script>
+</body>
+</html>
+
