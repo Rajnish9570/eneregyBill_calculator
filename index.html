@@ -150,10 +150,10 @@ list-style: blue;
       Rajnish Kumar </p><a href="mailto:rockstarrajnish4658@gmail.com" style="color: blue;font-size:19px;font-weight:500;">Contact Me</a>
       <script>
         function clickMe(){
-        const watt=parseInt(document.getElementById('powerConsume').value);
-        const hours=parseInt(document.getElementById('powerDuration').value);
-        const days=parseInt(document.getElementById('powerDays').value);
-        const rs=parseInt(document.getElementById('unitCharge').value);
+        const watt=parseFloat(document.getElementById('powerConsume').value);
+        const hours=parseFloat(document.getElementById('powerDuration').value);
+        const days=parseFloat(document.getElementById('powerDays').value);
+        const rs=parseFloat(document.getElementById('unitCharge').value);
       
 
         const kwh=watt/1000
